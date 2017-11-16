@@ -101,6 +101,16 @@ function notifyMessage(targetId, channel, msg) {
 
 	const button = sidebar.find(".chan[data-id='" + targetId + "']");
 	if (msg.highlight || (options.notifyAllMessages && msg.type === "message")) {
+		// append to highmon
+		const container = $("#highmon .messages");
+		targetId = $("#highmon");
+		render.appendMessage(
+			container,
+			targetId,
+			'highmon',
+			msg
+		);
+		console.log(['this is the notification message', msg]);
 		if (!document.hasFocus() || !channel.hasClass("active")) {
 			if (options.notification) {
 				try {
