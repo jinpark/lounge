@@ -110,7 +110,7 @@ function notifyMessage(targetId, channel, msg) {
 			'highmon',
 			msg
 		);
-		console.log(['this is the notification message', msg]);
+		
 		if (!document.hasFocus() || !channel.hasClass("active")) {
 			if (options.notification) {
 				try {
