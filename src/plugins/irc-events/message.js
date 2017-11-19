@@ -105,7 +105,8 @@ module.exports = function(irc, network) {
 		chan.pushMessage(client, msg, !self);
 
 		// Do not send notifications for messages older than 15 minutes (znc buffer for example)
-		if (highlight && (!data.time || data.time > Date.now() - 900000)) {
+		// if (highlight && (!data.time || data.time > Date.now() - 900000)) {
+		if (highlight) {
 			let title = chan.name;
 			let body = Helper.cleanIrcMessage(data.message);
 
