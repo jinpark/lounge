@@ -53,7 +53,12 @@ function appendMessage(container, chanId, chanType, msg) {
 		container.append(lastChild);
 	}
 
+	if (msg.highlight){
+		console.log(['highlight', msg]);
+	}
+
 	if ((constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") && (msg.highlight || (options.notifyAllMessages && msg.type === "message")) ) {
+		console.log(['highlight in actual place wtf', msg]);
 		const highmonContainer = $("#highmon .messages");
 		highmonContainer.append(renderedMessage);
 	}
