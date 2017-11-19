@@ -53,14 +53,14 @@ function appendMessage(container, chanId, chanType, msg) {
 		container.append(lastChild);
 	}
 
-	if (msg.highlight){
-		console.log(['highlight', msg]);
-	}
-
-	if ((constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") && (msg.highlight || (options.notifyAllMessages && msg.type === "message")) ) {
+	if ((constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") && (msg.highlight || (options.notifyAllMessages && msg.type === "message"))) {
 		console.log(['highlight in actual place wtf', msg]);
 		const highmonContainer = $("#highmon .messages");
-		highmonContainer.append(renderedMessage);
+		var highmonRenderedMessage = renderedMessage.clone(true);
+		var oldId = highmonRenderedMessage.attr('id');
+		highmonRenderedMessage.attr('id', oldId + 'highmon');
+
+		highmonContainer.append(highmonRenderedMessage);
 	}
 
 	// If current window is not a channel or this message is not condensable,
