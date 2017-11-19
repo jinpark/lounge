@@ -2255,5 +2255,5 @@ part/quit messages where we don't load previews (adds a blank line otherwise) */
 
 #highmon {
 	height: 10%;
-	bottom-border: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }

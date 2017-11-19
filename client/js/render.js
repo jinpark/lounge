@@ -53,6 +53,11 @@ function appendMessage(container, chanId, chanType, msg) {
 		container.append(lastChild);
 	}
 
+	if ((constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") && (msg.highlight || (options.notifyAllMessages && msg.type === "message")) ) {
+		const highmonContainer = $("#highmon .messages");
+		highmonContainer.append(renderedMessage);
+	}
+
 	// If current window is not a channel or this message is not condensable,
 	// then just append the message to container and be done with it
 	if (constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") {
