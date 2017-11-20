@@ -61,6 +61,7 @@ function appendMessage(container, chanId, chanType, msg) {
 		highmonRenderedMessage.attr('id', oldId + 'highmon');
 
 		highmonContainer.append(highmonRenderedMessage);
+		highmonContainer.trigger("keepToBottom");
 	}
 
 	// If current window is not a channel or this message is not condensable,
