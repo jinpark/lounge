@@ -20,6 +20,7 @@ const filteredFromClient = {
 	highlightRegex: true,
 	irc: true,
 	password: true,
+	ignoreList: true,
 };
 
 function Network(attr) {
@@ -44,6 +45,7 @@ function Network(attr) {
 			NETWORK: "",
 		},
 		chanCache: [],
+		ignoreList: [],
 	});
 
 	if (!this.uuid) {
@@ -328,6 +330,7 @@ Network.prototype.export = function() {
 		"commands",
 		"ip",
 		"hostname",
+		"ignoreList",
 	]);
 
 	network.channels = this.channels

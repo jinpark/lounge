@@ -46,6 +46,7 @@ const inputs = [
 	"away",
 	"connect",
 	"disconnect",
+	"ignore",
 	"invite",
 	"kick",
 	"mode",
