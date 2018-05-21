@@ -67,7 +67,7 @@ function appendMessage(container, chanId, chanType, msg) {
 			msg.channel = chanName;
 			const renderedMessage = $(templates["msg_topbar"](msg));
 			$("#topbar").append(renderedMessage);
-			$('#topbar').scrollTop = $('#topbar').scrollHeight
+			$('#topbar').scrollTop = $('#topbar').scrollHeight;
 		}
 		return;
 	}

@@ -6,9 +6,9 @@
         {{#if from.nick}}
             {{> user_name from}}
         {{/if}}
+        <span class="channelname">( {{channel}} )</span>
     </span>
     <span class="content">
-        <span class="channelname">( {{channel}} )</span>
         <span class="text">{{{parse text users}}}</span>
 
         {{#each previews}}
