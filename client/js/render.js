@@ -61,14 +61,17 @@ function appendMessage(container, chanId, chanType, msg) {
 	// then just append the message to container and be done with it
 	if (msg.self || msg.highlight || constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") {
 		container.append(renderedMessage);
+
 		// jin add
 		if (msg.highlight) {
-			var chanName = $("#chan-" + chanId).attr('aria-label');
+			var chanName = $("#chan-" + chanId).attr("aria-label");
 			msg.channel = chanName;
-			const renderedMessage = $(templates["msg_topbar"](msg));
-			$("#topbar").append(renderedMessage);
-			$('#topbar').scrollTop = $('#topbar').scrollHeight;
+			const topBarMessage = $(templates["msg_topbar"](msg));
+			$("#topbar").append(topBarMessage);
+
+			$("#topbar").scrollTop = $("#topbar").scrollHeight;
 		}
+
 		return;
 	}
 
