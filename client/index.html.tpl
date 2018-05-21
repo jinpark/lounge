@@ -76,7 +76,11 @@
 					<script async src="js/loading-error-handlers.js"></script>
 				</div>
 				<div id="chat-container" class="window">
-					<div id="chat"></div>
+					<div id="chat">
+						<div id="topbar">
+							
+						</div>
+					</div>
 					<div id="connection-error"></div>
 					<form id="form" method="post" action="">
 						<div class="input">

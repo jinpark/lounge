@@ -61,6 +61,13 @@ function appendMessage(container, chanId, chanType, msg) {
 	// then just append the message to container and be done with it
 	if (msg.self || msg.highlight || constants.condensedTypes.indexOf(msg.type) === -1 || chanType !== "channel") {
 		container.append(renderedMessage);
+		// jin add
+		if (msg.highlight) {
+			var newMessage = renderedMessage.clone();
+			newMessage.attr("id", newMessage.attr("id") + 'topbar');
+			$("#topbar").append(newMessage);
+			$('#topbar').scrollTop = $('#topbar').scrollHeight
+		}
 		return;
 	}
 
@@ -114,6 +121,7 @@ function buildChatMessage(msg) {
 
 	return renderedMessage;
 }
+
 
 function renderChannel(data) {
 	renderChannelMessages(data);
