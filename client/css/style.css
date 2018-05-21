@@ -2509,3 +2509,21 @@ part/quit messages where we don't load previews (adds a blank line otherwise) */
 #chat table.channel-list .topic {
 	white-space: pre-wrap;
 }
+
+/* jin add */
+
+#topbar {
+	height: 5em;
+	overflow-y: scroll;
+	font-size: 14px;
+	border-bottom: 1px solid;
+	transform: scaleY(-1);
+}
+
+#topbar .message {
+	transform: scaleY(-1);
+}
+
+#chat .chan {
+	top: 5em;
+}
