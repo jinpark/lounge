@@ -63,9 +63,10 @@ function appendMessage(container, chanId, chanType, msg) {
 		container.append(renderedMessage);
 		// jin add
 		if (msg.highlight) {
-			var newMessage = renderedMessage.clone();
-			newMessage.attr("id", newMessage.attr("id") + 'topbar');
-			$("#topbar").append(newMessage);
+			var chanName = $("#chan-" + chanId).attr('aria-label');
+			msg.channel = chanName;
+			const renderedMessage = $(templates["msg_topbar"](msg));
+			$("#topbar").append(renderedMessage);
 			$('#topbar').scrollTop = $('#topbar').scrollHeight
 		}
 		return;
