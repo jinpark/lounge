@@ -63,13 +63,14 @@ function appendMessage(container, chanId, chanType, msg) {
 		container.append(renderedMessage);
 
 		// jin add
-		if (msg.highlight) {
-			var chanName = $("#chan-" + chanId).attr("aria-label");
-			msg.channel = chanName;
+		if (msg.highlight && $(`#topbar [data-time="${msg.time}"]`).length === 0) {
+			msg.channel = $("#chan-" + chanId).attr("aria-label");
 			const topBarMessage = $(templates["msg_topbar"](msg));
 			$("#topbar").append(topBarMessage);
 
-			$("#topbar").scrollTop = $("#topbar").scrollHeight;
+			setTimeout(function() {
+				$("#topbar").scrollTop = $("#topbar").scrollHeight;
+			}, 100);
 		}
 
 		return;

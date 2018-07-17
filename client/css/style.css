@@ -2517,16 +2517,12 @@ part/quit messages where we don't load previews (adds a blank line otherwise) */
 	overflow-y: scroll;
 	font-size: 14px;
 	border-top: 1px solid;
-	transform: scaleY(-1);
 }
 @media (max-width: 479px) {
 	#topbar {
 		padding-left: 10px;
 		padding-right: 10px;
 	}
-}
-#topbar .message {
-	transform: scaleY(-1);
 }
 
 #chat .chan {

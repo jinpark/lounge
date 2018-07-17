@@ -232,6 +232,7 @@ Client.prototype.connect = function(args) {
 	client.save();
 
 	channels.forEach((channel) => channel.loadMessages(client, network));
+	network.getHighlights(client);
 };
 
 Client.prototype.generateToken = function(callback) {

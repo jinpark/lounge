@@ -509,6 +509,9 @@ function initializeClient(socket, client, token, lastMessage) {
 
 			const clientSettings = client.config.clientSettings;
 			socket.emit("setting:all", clientSettings);
+			client.networks.forEach(function(network) {
+				network.getHighlights(client);
+			});
 		});
 	}
 

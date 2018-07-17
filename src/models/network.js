@@ -357,3 +357,12 @@ Network.prototype.getChannel = function(name) {
 		return i > 0 && that.name.toLowerCase() === name;
 	});
 };
+
+Network.prototype.getHighlights = function(client) {
+	client.messageStorage
+		.getNickMessages(this, this.nick)
+		.then((messages) => {
+			client.emit("highlights", messages);
+		})
+		.catch((err) => log.error(`Failed to load messages for network highlights: ${err}`));
+};

@@ -152,6 +152,42 @@ class MessageStorage {
 			));
 		});
 	}
+
+	/**
+	 * CUSTOM FUNCTION
+	 * Load messages for your nick on a given network and resolve a promise with loaded messages.
+	 *
+	 * @param Network network - Network object where the channel is
+	 * @param nick nick - nick string
+	 */
+	getNickMessages(network, nick) {
+		if (!this.isEnabled || Helper.config.maxHistory < 1) {
+			return Promise.resolve([]);
+		}
+
+		return new Promise((resolve, reject) => {
+			this.database.parallelize(() => this.database.all(
+				"SELECT msg, type, time FROM messages WHERE network = ? AND msg LIKE ? AND type = ? ORDER BY time DESC LIMIT ?",
+				[network.uuid, `%${nick.toLowerCase()}%`, "message", 100],
+				(err, rows) => {
+					if (err) {
+						return reject(err);
+					}
+
+					resolve(rows.map((row) => {
+						const msg = JSON.parse(row.msg);
+						msg.time = row.time;
+						msg.type = row.type;
+
+						const newMsg = new Msg(msg);
+						newMsg.id = this.client.idMsg++;
+
+						return newMsg;
+					}).reverse());
+				}
+			));
+		});
+	}
 }
 
 module.exports = MessageStorage;
